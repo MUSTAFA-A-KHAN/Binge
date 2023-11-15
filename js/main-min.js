@@ -6,8 +6,8 @@ function getMovies(t) {
         i = "";
       $.each(e, (t, e) => {
         i += `\n                <div class="col-md-3">\n                <div class="well text-center">\n                <img src="${e.Poster}">\n                <h5>${e.Title}</h5>\n                <a onclick="movieSelected('${e.imdbID}')" class ="btn btn-danger" href="#">Movie Detailss</a>\n    
-        //<a href="#" onclick="window.open('https://vidsrc.to/embed/${e.Type}/${e.imdbID}'); return false;" class="btn btn-danger">Play</a>
-
+        <sript>//<a href="#" onclick="window.open('https://vidsrc.to/embed/${e.Type}/${e.imdbID}'); return false;" class="btn btn-danger">Play</a>
+</script>
         
         <button class="btn btn-danger" onclick="openMovieWin1('${e.Type}', '${e.imdbID}')">▶Play</button>
         <script type="text/javascript">
