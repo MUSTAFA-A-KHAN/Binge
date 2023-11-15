@@ -30,7 +30,7 @@ function getMovies(t) {
             // Opening a new window with the embedded video
             var newWindow = window.open("", "_blank", "top=100,left=250,height=540,width=720,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
 
-            newWindow.document.title = "Embedded Video";
+            newWindow.document.title = "${e.Title}";
             newWindow.document.body.style.backgroundColor = "black";
             // Appending the <iframe> to the new window's document body
             newWindow.document.body.appendChild(embeddedVideo);
