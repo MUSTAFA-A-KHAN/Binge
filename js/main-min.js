@@ -11,8 +11,7 @@ function getMovies(t) {
         <button class="btn btn-danger" onclick="openMovieWin1('${e.Type}', '${e.imdbID}')">▶Play</button>
         <script type="text/javascript">
           function openMovieWin1(type, imdbID) {
-            // Embedding Google Drive video using <iframe>  <a href="#" onclick="window.open('https://vidsrc.to/embed/${e.Type}/${e.imdbID}'); return false;" class="btn btn-danger">Play</a>
-
+            // Embedding Google Drive video using <iframe> 
             var embeddedVideo = document.createElement("iframe");
             var url = 'https://vidsrc.to/embed/';
             if (type !== 'movie') {
