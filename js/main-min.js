@@ -5,26 +5,25 @@ function getMovies(t) {
       let e = t.data.Search,
         i = "";
       $.each(e, (t, e) => {
-        i += `\n                
-
-    <div class="poster"> 
+        i += `\n            
+  <div class="poster"> 
   <div class="flip-card_i">
       <div class="flip-card-inner_i">
           <div class="flip-card-front_i">   
                
            <img src="${e.Poster}">\n     
            </div>  
-           <div class="flip-card-back_i">  
+           <div class="flip-card-back_i">       
+             <h5>${e.Title}</h5>\n 
+             <p>${e.Plot} </p>             
+               <a onclick="movieSelected('${e.imdbID}')" class ="btn btn-danger" href="#">Movie Details</a>\n    
         
-                   <h5>${e.Title}</h5>\n  
-                   
-                   <a onclick="movieSelected('${e.imdbID}')" class ="btn btn-danger" href="#">Movie Details</a>\n    
-       
+
         
         <button class="btn btn-danger" onclick="openMovieWin1('${e.Type}', '${e.imdbID}')">▶Play</button>
         <script type="text/javascript">
           function openMovieWin1(type, imdbID) {
-            // Embedding Google Drive video using <iframe> 
+            // Embedding Google Drive video using <iframe>
             var embeddedVideo = document.createElement("iframe");
             var url = 'https://vidsrc.to/embed/';
             if (type !== 'movie') {
@@ -42,12 +41,11 @@ function getMovies(t) {
         
             // Opening a new window with the embedded video
             var newWindow = window.open("", "_blank", "top=100,left=250,height=540,width=720,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-
-            newWindow.document.title = "${e.Title}";
+            
+            newWindow.document.title = '${e.Title}';
             newWindow.document.body.style.backgroundColor = "black";
             // Appending the <iframe> to the new window's document body
             newWindow.document.body.appendChild(embeddedVideo);
-            
         
             // Creating a button to toggle fullscreen
             var fullscreenButton = newWindow.document.createElement("button");
@@ -77,14 +75,12 @@ function getMovies(t) {
             fullscreenButton.addEventListener("click", toggleFullscreen);
           }
         </script>
-         
+         </div>
+       </div>\n                
+      </div>
         
-        </div>
-        
-        
-        
-        
-        </div>\n                </div>\n                `;
+    </div>\n    
+    </div>            `;
       }),
         $("#movies").html(i);
     })
