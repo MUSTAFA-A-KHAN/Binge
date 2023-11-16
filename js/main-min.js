@@ -16,7 +16,7 @@ function getMovies(t) {
            <div class="flip-card-back_i">       
              <h5>${e.Title}</h5>\n 
              <h6>${e.Year}</h6>              
-               <a onclick="movieSelected('${e.imdbID}')" class ="btn btn-danger" href="#">Movie Details</a>\n    
+               <a onclick="movieSelected('${e.imdbID}')" class ="btn btn-danger" href="#">Movie Detailsⓘ</a>\n    
         
 
         
