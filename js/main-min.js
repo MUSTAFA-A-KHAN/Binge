@@ -79,7 +79,7 @@ function getMovies(t) {
         </script>
          
         
-        
+        </div>
         
         
         
