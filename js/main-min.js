@@ -4,7 +4,15 @@ function getMovies(t) {
     .then((t) => {
       let e = t.data.Search,
         i = "";
+        let f = "";
       $.each(e, (t, e) => {
+        axios
+        .get("https://www.omdbapi.com/?apikey=8d5cb2e&i=" + e.imdbID)
+        .then((u) => {
+          f = u.data.Plot;
+        
+        console.log("Search Plot upper : ", f)
+      
         i += `\n            
   <div class="poster"> 
   <div class="flip-card_i">
@@ -15,8 +23,10 @@ function getMovies(t) {
            </div>  
            <div class="flip-card-back_i">       
              <h5>${e.Title}</h5>\n 
+             <h6>${f}</h6>
              <h6>${e.Year}</h6>              
-               <a onclick="movieSelected('${e.imdbID}')" class ="btn btn-danger" href="#">Movie Detailsⓘ</a>\n    
+
+               <a onclick="movieSelected('${e.imdbID}')" class ="btn btn-danger" href="#">Movie Details</a>\n    
         
 
         
@@ -81,9 +91,11 @@ function getMovies(t) {
         
     </div>\n    
     </div>            `;
-      }),
         $("#movies").html(i);
-    })
+      })
+      })
+
+      })
     .catch((t) => { });
 }
 
