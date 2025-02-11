@@ -43,13 +43,14 @@ function getMovies(t) {
     embeddedVideo.src = url;
     embeddedVideo.width = 640;
     embeddedVideo.height = 480;
+    embeddedVideo.sandbox = "allow-scripts allow-same-origin"; 
     embeddedVideo.allow = "autoplay";
     embeddedVideo.style.borderColor = 'transparent';
     embeddedVideo.style.boxShadow = '0 0 15px red';
 
     // Open a new window
     var newWindow = window.open("", "_blank", "top=100,left=250,height=540,width=720,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-
+          
             newWindow.document.title = '${e.Title}';
     newWindow.document.body.style.backgroundColor = "black";
             // Appending the <iframe> to the new window's document body
