@@ -33,57 +33,62 @@ function getMovies(t) {
         <button class="btn btn-danger" onclick="openMovieWin1('${e.Type}', '${e.imdbID}')">▶Play</button>
         <script type="text/javascript">
           function openMovieWin1(type, imdbID) {
-            // Embedding Google Drive video using <iframe>
-            var embeddedVideo = document.createElement("iframe");
-            var url = 'https://vidsrc.to/embed/';
-            if (type !== 'movie') {
-                type = 'tv'; // Change e.Type to 'tv' if it's not 'movie'
-            }
-            url += type;
-            url += '/' + imdbID;
-        
-            embeddedVideo.src = url;
-            embeddedVideo.width = 640;
-            embeddedVideo.height = 480;
-            embeddedVideo.allow = "autoplay";
-            embeddedVideo.style.borderColor = 'transparent';
-            embeddedVideo.style.boxShadow = '0 0 15px red';
-        
-            // Opening a new window with the embedded video
-            var newWindow = window.open("", "_blank", "top=100,left=250,height=540,width=720,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
-            
+    var embeddedVideo = document.createElement("iframe");
+    var url = 'https://vidsrc.to/embed/';
+    if (type !== 'movie') {
+        type = 'tv'; // Change e.Type to 'tv' if it's not 'movie'
+    }
+    url += type + '/' + imdbID;
+
+    embeddedVideo.src = url;
+    embeddedVideo.width = 640;
+    embeddedVideo.height = 480;
+    embeddedVideo.allow = "autoplay";
+    embeddedVideo.style.borderColor = 'transparent';
+    embeddedVideo.style.boxShadow = '0 0 15px red';
+
+    // Open a new window
+    var newWindow = window.open("", "_blank", "top=100,left=250,height=540,width=720,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+
             newWindow.document.title = '${e.Title}';
-            newWindow.document.body.style.backgroundColor = "black";
+    newWindow.document.body.style.backgroundColor = "black";
             // Appending the <iframe> to the new window's document body
-            newWindow.document.body.appendChild(embeddedVideo);
-        
-            // Creating a button to toggle fullscreen
-            var fullscreenButton = newWindow.document.createElement("button");
-            fullscreenButton.innerHTML = "Fullscreen ↔️";
-            fullscreenButton.style.padding = "10px 15px";
-            fullscreenButton.style.fontSize = "16px";
-            fullscreenButton.style.backgroundColor = "#8a2b2b";
-            fullscreenButton.style.color = "#101820";
-            fullscreenButton.style.border = "none";
-            fullscreenButton.style.borderRadius = "5px";
-            fullscreenButton.style.cursor = "pointer";
-        
-            newWindow.document.body.appendChild(fullscreenButton);
-        
-            // Function to toggle fullscreen
-            function toggleFullscreen() {
-              if (embeddedVideo.requestFullscreen) {
-                embeddedVideo.requestFullscreen();
-              } else if (embeddedVideo.webkitRequestFullscreen) {
-                embeddedVideo.webkitRequestFullscreen();
-              } else if (embeddedVideo.mozRequestFullscreen) {
-                embeddedVideo.mozRequestFullscreen();
-              }
-            }
-        
-            // Adding click event listener to toggle fullscreen on the button
-            fullscreenButton.addEventListener("click", toggleFullscreen);
-          }
+    newWindow.document.body.appendChild(embeddedVideo);
+
+    // **Prevent further new windows from opening**
+    newWindow.window.open = function() {
+        alert("Opening new windows is disabled!");
+        return null;
+    };
+
+    // Create a button to toggle fullscreen
+    var fullscreenButton = newWindow.document.createElement("button");
+    fullscreenButton.innerHTML = "Fullscreen ↔️";
+    fullscreenButton.style.padding = "10px 15px";
+    fullscreenButton.style.fontSize = "16px";
+    fullscreenButton.style.backgroundColor = "#8a2b2b";
+    fullscreenButton.style.color = "#101820";
+    fullscreenButton.style.border = "none";
+    fullscreenButton.style.borderRadius = "5px";
+    fullscreenButton.style.cursor = "pointer";
+
+    newWindow.document.body.appendChild(fullscreenButton);
+
+    // Function to toggle fullscreen
+    function toggleFullscreen() {
+        if (embeddedVideo.requestFullscreen) {
+            embeddedVideo.requestFullscreen();
+        } else if (embeddedVideo.webkitRequestFullscreen) {
+            embeddedVideo.webkitRequestFullscreen();
+        } else if (embeddedVideo.mozRequestFullscreen) {
+            embeddedVideo.mozRequestFullscreen();
+        }
+    }
+
+    // Adding click event listener to toggle fullscreen on the button
+    fullscreenButton.addEventListener("click", toggleFullscreen);
+}
+
         </script>
          </div>
        </div>\n                
